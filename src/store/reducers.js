@@ -7,15 +7,16 @@ const INITIAL_STATE = {
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.ADDED:
-      //   const newPerson = {
-      //     id: Math.random(), // not really unique but good enough here!
-      //     name: 'Max',
-      //     age: Math.floor(Math.random() * 40),
-      //   };
+      const newPerson = {
+        id: action.payload.id, // not really unique but good enough here!
+        name: action.payload.personData.name,
+        age: action.payload.personData.age,
+      };
       console.log(action.payload);
+      console.log(newPerson);
       return {
         ...state,
-        persons: state.persons.concat(action.payload),
+        persons: state.persons.concat(newPerson),
       };
     case actionTypes.DELETED:
       const updatedArray = state.persons.filter(

@@ -44,13 +44,12 @@ class Persons extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onAddedClicked: () => {
-      const newPerson = {
-        id: Math.random(), // not really unique but good enough here!
-        name: 'Max',
-        age: Math.floor(Math.random() * 40),
-      };
-      dispatch({ type: actionTypes.ADDED, payload: newPerson });
+    onAddedClicked: (name, age) => {
+      const id = Math.random();
+      dispatch({
+        type: actionTypes.ADDED,
+        payload: { id: id, personData: { name: name, age: age } },
+      });
     },
     onDeletedClicked: (id) => {
       dispatch({ type: actionTypes.DELETED, pId: id });
